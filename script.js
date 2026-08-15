@@ -1,6 +1,11 @@
-
-
-const header = document.getElementById('header');const menuBtn = document.getElementById('menu-btn');const navLinksContainer = document.getElementById('nav-links');const navLinks = document.querySelectorAll('.nav-links a');const sections = document.querySelectorAll('section, footer');const contactForm = document.getElementById('contact-form');const formFeedback = document.getElementById('form-feedback');const themeToggleBtn = document.getElementById('theme-toggle');
+const header = document.getElementById('header');
+const menuBtn = document.getElementById('menu-btn');
+const navLinksContainer = document.getElementById('nav-links');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section, footer');
+const contactForm = document.getElementById('contact-form');
+const formFeedback = document.getElementById('form-feedback');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -10,8 +15,8 @@ window.addEventListener('scroll', () => {
     }
     highlightNavOnScroll();
 });
-if (menuBtn && navLinksContainer) {
 
+if (menuBtn && navLinksContainer) {
     menuBtn.addEventListener('click', () => {
         navLinksContainer.classList.toggle('active');
         const icon = menuBtn.querySelector('i');
@@ -31,9 +36,9 @@ navLinks.forEach(link => {
         if (menuBtn) {
             menuBtn.querySelector('i').className = 'fa-solid fa-bars';
         }
-
     });
 });
+
 function highlightNavOnScroll() {
     let scrollPos = window.scrollY + 100;
     sections.forEach(section => {
@@ -47,15 +52,17 @@ function highlightNavOnScroll() {
         }
     });
 }
-let savedTheme = null;
 
+let savedTheme = null;
 
 try {
     savedTheme = localStorage.getItem('theme');
 } catch (error) {
     console.warn('localStorage is restricted or unavailable in this environment:', error);
 }
+
 const systemPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
 if (savedTheme === 'light') {
     document.body.classList.add('light-theme');
     updateThemeIcon('light');
@@ -67,9 +74,9 @@ if (savedTheme === 'light') {
     updateThemeIcon('light');
 } else {
     document.body.classList.remove('light-theme');
-
     updateThemeIcon('dark');
 }
+
 if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('light-theme');
@@ -84,8 +91,8 @@ if (themeToggleBtn) {
         updateThemeIcon(isLightActive ? 'light' : 'dark');
     });
 }
-function updateThemeIcon(currentTheme) {
 
+function updateThemeIcon(currentTheme) {
     if (!themeToggleBtn) return;
     const icon = themeToggleBtn.querySelector('i');
     if (icon) {
@@ -96,29 +103,38 @@ function updateThemeIcon(currentTheme) {
         }
     }
 }
+
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Stop standard blank page reload behavior
         
         const nameValue = document.getElementById('name').value;
         
-        if (formFeedback) {
-            formFeedback.textContent = `Thank you, ${nameValue}! Your message has been simulated successfully.`;
-
-            formFeedback.className = "form-feedback success";
-            formFeedback.style.display = 'block';
-        }
-        
-        contactForm.reset();
-        
-        setTimeout(() => {
-            if (formFeedback) {
-                formFeedback.style.display = 'none';
-                formFeedback.className = "form-feedback";
-                formFeedback.textContent = "";
+        // 1. Submit the form data programmatically to Formspree using fetch API
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                // 2. Display success text to user smoothly
+                if (formFeedback) {
+                    formFeedback.textContent = `Thank you, ${nameValue}! Your message has been sent successfully.`;
+                    formFeedback.className = "form-feedback success";
+                    formFeedback.style.display = 'block';
+                }
+                
+                contactForm.reset();
+                
+                // 3. Slide seamlessly onto your custom thankyou.html after a 2-second delay
+                setTimeout(() => {
+                    window.location.href = "thankyou.html";
+                }, 2000);
+            } else {
+                alert("Oops! There was a problem submitting your form.");
             }
-        }, 5000);
+        }).catch(error => {
+            console.error("Form error:", error);
+        });
     });
 }
-
-
