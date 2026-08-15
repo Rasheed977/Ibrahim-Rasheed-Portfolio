@@ -188,100 +188,83 @@
                     </div>
                 </div>
             </div>
-
-<!-- =========================================================
-   PROJECT CARD 3 ONLY
-========================================================= -->
-<div class="project-card">
-    <div class="project-img-placeholder">
-        <i class="fa-solid fa-chart-line"></i>
-    </div>
-    <div class="project-info">
-        <div class="project-tags">
-            <span>Node.js</span>
-            <span>Express</span>
-            <span>ChartJS</span>
+    <!-- =========================================================
+       CONTACT SECTION
+    ========================================================= -->
+    <section class="section" id="contact">
+        <div class="section-heading">
+            <p>Get In Touch</p>
+            <h2>Connect <span>With Me</span></h2>
         </div>
-        <h3>Analytics Metrics Suite</h3>
-        <p>A secure platform designed to aggregate analytical indicators from external endpoints and transform them into interactive data graphs.</p>
-        <div class="project-links">
-            <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> Repository</a>
-            <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
-        </div>
-    </div>
-</div>
+        <div class="contact-grid">
+            <div class="contact-details">
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <h4>Email Me</h4>
+                        <p>ri9195884@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+234 904 187 3270</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Ota, Nigeria</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <h4>Freelance Status</h4>
+                        <p>Available for Contracts</p>
+                    </div>
+                </div>
+            </div>
 
-<!-- =========================================================
-   CONTACT SECTION (EMAIL, PHONE, MESSAGE FIELDS)
-========================================================= -->
-<section class="section" id="contact">
-    <div class="section-heading">
-        <p>Get In Touch</p>
-        <h2>Connect <span>With Me</span></h2>
-    </div>
-    <div class="contact-grid">
-        <div class="contact-details">
-            <div class="contact-card">
-                <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-                <div>
-                    <h4>Email Me</h4>
-                    <p>ri9195884@gmail.com</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
-                <div>
-                    <h4>Phone</h4>
-                    <p>+234 904 187 3270</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
-                <div>
-                    <h4>Location</h4>
-                    <p>Ota, Nigeria</p>
-                </div>
-            </div>
-            <div class="contact-card">
-                <div class="icon-box"><i class="fa-solid fa-circle-check"></i></div>
-                <div>
-                    <h4>Freelance Status</h4>
-                    <p>Available for Contracts</p>
-                </div>
-            </div>
-        </div>
-
-        <form class="contact-form" id="contact-form" action="https://formspree.io" method="POST">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required autocomplete="name">
+            <!-- Fully Operational Live Formspree Email Form Pipeline Engine -->
+            <form class="contact-form" id="contact-form" action="https://formspree.io" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" required autocomplete="email">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <div id="form-feedback" class="form-feedback"></div>
-            <button type="submit" class="btn primary-btn" style="width: max-content;">Send Message <i class="fa-solid fa-paper-plane"></i></button>
-        </form>
-    </div>
-</section>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <div id="form-feedback" class="form-feedback"></div>
+                <button type="submit" class="btn primary-btn" style="width: max-content;">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
 
-<!-- =========================================================
-   BOTTOM NAVIGATION / FOOTER ONLY
-========================================================= -->
-<footer class="footer">
-    <div class="footer-content">
-        <a href="#home" class="logo">Rasheed<span>.</span></a>
-        <p>&copy; 2026 Rasheed Ibrahim. Built with precise layout structural workflows.</p>
-    </div>
-</footer>
+    <!-- =========================================================
+       FOOTER COMPONENT
+    ========================================================= -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="#home" class="logo">Rasheed<span>.</span></a>
+            <p>&copy; 2026 Rasheed Ibrahim. Built with precise layout structural workflows.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
