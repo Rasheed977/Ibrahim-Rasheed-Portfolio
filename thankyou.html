@@ -1,67 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Sent Successfully | Rasheed Ibrahim</title>
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <!-- Reuse your main stylesheet to keep dark theme matching -->
-    <link rel="stylesheet" href="style.css">
+    <title>Message Sent | Rasheed Ibrahim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        .success-wrapper {
-            min-height: 100vh;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #080b12;
+            color: #f5f7fb;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .thankyou-card {
+            background: #111722;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            border-radius: 14px;
             text-align: center;
-            padding: 25px;
-            background: var(--bg);
+            max-width: 450px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
-        .success-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 50px 40px;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        .icon {
+            font-size: 3.5rem;
+            color: #5b8cff;
+            margin-bottom: 20px;
         }
-        .success-icon {
-            font-size: 4rem;
-            color: #27c93f;
-            margin-bottom: 25px;
+        h1 { margin: 0 0 15px 0; font-size: 2rem; font-weight: 800; }
+        p { color: #aeb7c7; margin: 0 0 30px 0; font-size: 1rem; line-height: 1.6; }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #5b8cff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
         }
-        .success-card h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-        .success-card p {
-            color: var(--text-light);
-            font-size: 1.05rem;
-            margin-bottom: 35px;
-        }
+        .back-btn:hover { background: #7aa3ff; transform: translateY(-2px); }
     </style>
 </head>
-
 <body>
-    <main class="success-wrapper">
-        <div class="success-card">
-            <div class="success-icon">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h1>Message Sent!</h1>
-            <p>Thank you for reaching out, Rasheed. Your message has been safely received, and I will get back to you shortly via email or WhatsApp.</p>
-            <a href="index.html" class="btn primary-btn"><i class="fa-solid fa-arrow-left"></i> Back To Portfolio</a>
-        </div>
-    </main>
+    <div class="thankyou-card">
+        <div class="icon"><i class="fa-solid fa-circle-check"></i></div>
+        <h1>Message Received!</h1>
+        <p>Thank you for reaching out. Your message has successfully passed through my contact gateway. I will review your details and respond shortly.</p>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
 </body>
-
 </html>
