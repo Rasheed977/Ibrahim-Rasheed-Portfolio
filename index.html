@@ -1,22 +1,34 @@
-# index.html - Complete Portfolio Layout
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"  content="Rasheed Ibrahim - Web Developer and Programmer Portfolio">
+
+    <meta name="description" content="Rasheed Ibrahim - Web Developer and Programmer Portfolio">
+
     <meta name="author" content="Rasheed Ibrahim">
+
     <title>Rasheed Ibrahim | Web Developer</title>
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- External CSS link -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- =========================================================
+       HEADER & NAVIGATION
+    ========================================================= -->
     <header class="header" id="header">
         <nav class="navbar">
             <a href="#home" class="logo">Rasheed<span>.</span></a>
@@ -24,8 +36,8 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-
                 <li><a href="#contact">Contact</a></li>
+
             </ul>
             <div class="nav-actions">
                 <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
@@ -39,15 +51,19 @@
         </nav>
     </header>
 
+    <!-- =========================================================
+       HERO SECTION
+    ========================================================= -->
     <section class="hero-section" id="home">
         <div class="hero">
-
             <div class="hero-info">
+
                 <p class="hero-small">Hi, my name is</p>
                 <h1>Rasheed <span>Ibrahim.</span></h1>
                 <h2>Building high-performance digital architectures.</h2>
                 <p class="hero-text">
-                    I am a web developer and programmer dedicated to engineering clean, robust, and exceptionally fast web ecosystems that elevate modern brand platforms.
+                    I am a web developer and programmer dedicated to engineering clean, robust, and exceptionally fast
+                    web ecosystems that elevate modern brand platforms.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn primary-btn">View My Work <i class="fa-solid fa-arrow-right"></i></a>
@@ -70,10 +86,13 @@
                     </div>
                     <div class="code-content">
                         <p><span class="purple">const</span> developer = {</p>
-                        <p class="indent"><span class="blue">name</span>: <span class="green">'Rasheed Ibrahim'</span>,</p>
-                        <p class="indent"><span class="blue">role</span>: <span class="green">'Full Stack Web Developer'</span>,</p>
+                        <p class="indent"><span class="blue">name</span>: <span class="green">'Rasheed Ibrahim'</span>,
+                        </p>
+                        <p class="indent"><span class="blue">role</span>: <span class="green">'Full Stack Web
+                                Developer'</span>,</p>
                         <p class="indent"><span class="blue">skills</span>: [</p>
-                        <p class="indent-2"><span class="green">'HTML5'</span>, <span class="green">'CSS3'</span>, <span class="green">'JavaScript'</span>,</p>
+                        <p class="indent-2"><span class="green">'HTML5'</span>, <span class="green">'CSS3'</span>, <span
+                                class="green">'JavaScript'</span>,</p>
                         <p class="indent-2"><span class="green">'React'</span>, <span class="green">'Node.js'</span></p>
                         <p class="indent">],</p>
                         <p class="indent"><span class="blue">hardWorker</span>: <span class="orange">true</span>,</p>
@@ -86,6 +105,9 @@
         </div>
     </section>
 
+    <!-- =========================================================
+       ABOUT & SKILLS SECTION
+    ========================================================= -->
     <section class="section" id="about">
         <div class="section-heading">
             <p>Biography</p>
@@ -95,11 +117,15 @@
             <div class="about-text">
                 <h3>Who I Am</h3>
                 <p>
-                    I design and implement reliable technical solutions for complex design paradigms. My focus is on writing elegant, semantic source material, managing optimal responsive behaviors, and maximizing layout rendering efficiency.
+                    I'm a full-stack developer who treats code as an art form and web performance as a core mission. I
+                    don't just build sites; I engineer high-octane, pixel-perfect digital ecosystems that load
+                    instantly, feel incredibly fluid, and look stunning on any screen size.
                 </p>
                 <p>
 
-                    Whether constructing intuitive administrative setups or building dynamic interactive applications, I aim to maintain accessibility compliance and performance excellence throughout development.
+                    From crafting buttery-smooth interactive components to standing up rock-solid backend microservices,
+                    I live at the intersection of logic and layout. If a user experience can be streamlined, automated,
+                    or optimized to run faster, I'm already on it.
                 </p>
             </div>
             <div class="about-skills">
@@ -131,6 +157,9 @@
         </div>
     </section>
 
+    <!-- =========================================================
+       PROJECTS SECTION
+    ========================================================= -->
     <section class="section" id="projects">
         <div class="section-heading">
             <p>Curated Portfolio</p>
@@ -150,7 +179,8 @@
                         <span>MongoDB</span>
                     </div>
                     <h3>Enterprise CMS Platform</h3>
-                    <p>An administrative workspace designed for headless content management, complete with high-performance real-time telemetry metrics and customizable widgets.</p>
+                    <p>An administrative workspace designed for headless content management, complete with
+                        high-performance real-time telemetry metrics and customizable widgets.</p>
                     <div class="project-links">
                         <a href="#"><i class="fa-brands fa-github"></i> Repository</a>
                         <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
@@ -159,6 +189,7 @@
                 </div>
             </div>
 
+            <!-- Project 2 -->
             <div class="project-card">
                 <div class="project-img-placeholder">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -170,7 +201,8 @@
                         <span>API</span>
                     </div>
                     <h3>Fluid E-Commerce Engine</h3>
-                    <p>A fast frontend solution featuring instantaneous client-side sorting algorithms, dynamic shopping baskets, and stripe processing pipelines.</p>
+                    <p>A fast frontend solution featuring instantaneous client-side sorting algorithms, dynamic shopping
+                        baskets, and stripe processing pipelines.</p>
                     <div class="project-links">
                         <a href="#"><i class="fa-brands fa-github"></i> Repository</a>
                         <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
@@ -178,9 +210,34 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span>Node.js</span>
+                        <span>Express</span>
+                        <span>ChartJS</span>
+                    </div>
+                    <h3>Analytics Metrics Suite</h3>
+                    <p>A secure platform designed to aggregate analytical indicators from external endpoints and
+                        transform them into interactive data graphs.</p>
+                    <div class="project-links">
+                        <a href="#"><i class="fa-brands fa-github"></i> Repository</a>
+
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
->
+
+    <!-- =========================================================
+       CONTACT SECTION
+    ========================================================= -->
     <section class="section" id="contact">
         <div class="section-heading">
             <p>Get In Touch</p>
@@ -190,17 +247,17 @@
             <div class="contact-details">
                 <div class="contact-card">
                     <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-                    <div>
 
+                    <div>
                         <h4>Email Me</h4>
-                        <p>ri9195884@gmail.com</p>
+                        <p>rasheed@example.com</p>
                     </div>
                 </div>
                 <div class="contact-card">
                     <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
                     <div>
-                        <h4>Call Me</h4>
-                        <p>+234 904 187 3270</p>
+                        <h4>Phone</h4>
+                        <p>+234 800 000 0000</p>
                     </div>
                 </div>
                 <div class="contact-card">
@@ -210,8 +267,8 @@
                         <p>Ota, Nigeria</p>
                     </div>
                 </div>
-                <div class="contact-card">
 
+                <div class="contact-card">
                     <div class="icon-box"><i class="fa-solid fa-circle-check"></i></div>
                     <div>
                         <h4>Freelance Status</h4>
@@ -220,40 +277,44 @@
                 </div>
             </div>
 
-            <form class="contact-form" id="contact-form">
+            <!-- Updated form tag with standard action, method, and explicit input names for email APIs -->
+            <form class="contact-form" id="contact-form" action="https://formspree.io" method="POST">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" required autocomplete="name">
+                        <input type="text" id="name" name="name" required autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="email">
+
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="text" id="subject" required>
+                    <input type="text" id="subject" name="subject" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" rows="5" required></textarea>
+                    <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
                 <div id="form-feedback" class="form-feedback"></div>
-                <button type="submit" class="btn primary-btn" style="width: max-content;">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                <button type="submit" class="btn primary-btn" style="width: max-content;">Send Message <i
+                        class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
     </section>
 
+
     <footer class="footer">
         <div class="footer-content">
-
             <a href="#home" class="logo">Rasheed<span>.</span></a>
             <p>&copy; 2026 Rasheed Ibrahim. Built with precise layout structural workflows.</p>
         </div>
     </footer>
-    
+
+    <!-- Link external script -->
     <script src="script.js"></script>
 </body>
+
 </html>
