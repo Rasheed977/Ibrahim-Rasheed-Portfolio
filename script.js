@@ -108,7 +108,7 @@
         }
 
         if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.querySelectorAll('submit', (e) => {
                 e.preventDefault();
                 const nameValue = document.getElementById('name').value;
                 
