@@ -108,88 +108,40 @@
         }
 
         if (contactForm) {
-            contactForm.querySelectorAll('submit', (e) => {
-                e.preventDefault();
-                const nameValue = document.getElementById('name').value;
-                
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: { 'Accept': 'application/json' }
-                }).then(response => {
-                    if (response.ok) {
-                        if (formFeedback) {
-                            formFeedback.textContent = `
-                            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Sent | Rasheed Ibrahim</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #080b12;
-            color: #f5f7fb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        .thankyou-card {
-            background: #111722;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 40px;
-            border-radius: 14px;
-            text-align: center;
-            max-width: 450px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-        }
-        .icon {
-            font-size: 3.5rem;
-            color: #5b8cff;
-            margin-bottom: 20px;
-        }
-        h1 { margin: 0 0 15px 0; font-size: 2rem; font-weight: 800; }
-        p { color: #aeb7c7; margin: 0 0 30px 0; font-size: 1rem; line-height: 1.6; }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #5b8cff;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .back-btn:hover { background: #7aa3ff; transform: translateY(-2px); }
-    </style>
-</head>
-<body>
-    <div class="thankyou-card">
-        <div class="icon"><i class="fa-solid fa-circle-check"></i></div>
-        <h1>Message Received!</h1>
-        <p>Thank you for reaching out us ${nameValue}!. Your message has successfully passed through my contact gateway. I will review your details and respond shortly.</p>
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-    </div>
-</body>
-</html>
-`;
-                            formFeedback.className = "form-feedback success";
-                            formFeedback.style.display = 'block';
-                        }
-    
-                    } else {
-                        alert("Oops! There was a problem submitting your form.");
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    submitButton.disabled = true;
+                }
+
+                formFeedback.textContent = 'Sending...';
+                formFeedback.className = 'form-feedback';
+                formFeedback.style.display = 'block';
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: { Accept: 'application/json' }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Form submission failed with status ${response.status}`);
                     }
-                }).catch(error => {
-                    console.error("Form error:", error);
-                });
+
+                    contactForm.reset();
+                    formFeedback.textContent = 'Thanks for reaching out. Your message has been sent.';
+                    formFeedback.className = 'form-feedback success';
+                } catch (error) {
+                    console.error('Form error:', error);
+                    formFeedback.textContent = 'Sorry, your message could not be sent. Please try again.';
+                    formFeedback.className = 'form-feedback error';
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                    }
+                }
             });
         }
