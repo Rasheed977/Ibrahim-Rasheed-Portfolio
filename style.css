@@ -869,3 +869,160 @@
                 gap: 15px;
             }
         }
+
+
+        /* =========================================================
+   DEVELOPER TELEMETRY DASHBOARD STYLING
+========================================================= */
+.contact-container {
+    max-width: 700px;
+    margin: 40px auto 0 auto;
+    width: 100%;
+}
+
+.dashboard-wrapper {
+    animation: fadeInDashboard 0.4s ease-out forwards;
+}
+
+.dashboard-panel {
+    background: #111827; /* Deep terminal background */
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Matching the Header Panel Dots from your Portfolio Hero Section */
+.panel-header {
+    background: #1f2937;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #374151;
+}
+
+.panel-dots {
+    display: flex;
+    gap: 8px;
+    margin-right: 20px;
+}
+
+.panel-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.panel-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.panel-body {
+    padding: 30px;
+}
+
+.status-alert {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.status-icon {
+    font-size: 2.5rem;
+    color: #10b981;
+}
+
+.status-text h3 {
+    color: #10b981;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.status-text p {
+    color: #d1d5db;
+    font-size: 0.95rem;
+}
+
+/* Telemetry Column Layout Grid */
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.telemetry-card {
+    background: #1f2937;
+    border: 1px solid #374151;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.telemetry-card .label {
+    display: block;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.telemetry-card .value {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.status-green { color: #10b981 !important; }
+.status-orange { color: #f59e0b !important; }
+
+/* Log Console Window Container */
+.console-log {
+    background: #030712;
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid #1f2937;
+    margin-bottom: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.log-line {
+    color: #e5e7eb;
+}
+
+.log-ts {
+    color: #6b7280;
+}
+
+@keyframes fadeInDashboard {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments for mobile phone setups */
+@media (max-width: 600px) {
+    .telemetry-grid {
+        grid-template-columns: 1fr;
+    }
+    .status-alert {
+        flex-direction: column;
+        text-align: center;
+    }
+}
