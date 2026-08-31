@@ -870,32 +870,105 @@
             }
         }
 
-
-        /* =========================================================
-   DEVELOPER TELEMETRY DASHBOARD STYLING
+/* =========================================================
+   CONTACT GRID & TELEMETRY DASHBOARD LAYOUT
 ========================================================= */
-.contact-container {
-    max-width: 700px;
+
+/* Main Section Layout Container */
+.contact-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 1100px;
     margin: 40px auto 0 auto;
+    padding: 0 20px;
+    align-items: start;
+}
+
+/* Left Sidebar Info Card */
+.contact-info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-info-sidebar h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color, #ffffff);
+    margin-bottom: 5px;
+}
+
+.contact-info-sidebar p {
+    font-size: 1rem;
+    color: var(--text-muted, #9ca3af);
+    line-height: 1.6;
+}
+
+.contact-info-sidebar strong {
+    color: var(--text-color, #ffffff);
+    display: inline-block;
+    width: 130px;
+}
+
+/* Interactive Zone (Form and Dashboard Wrapper) */
+.contact-interactive-zone {
+    width: 100%;
+    position: relative;
+}
+
+/* Form Structural Inputs */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     width: 100%;
 }
 
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #374151);
+    background: var(--input-bg, rgba(31, 41, 55, 0.5));
+    color: var(--text-color, #ffffff);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #10b981; /* Tech Green Focus Accent */
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+/* =========================================================
+   DASHBOARD PANEL COMPONENTS
+========================================================= */
 .dashboard-wrapper {
-    animation: fadeInDashboard 0.4s ease-out forwards;
+    width: 100%;
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .dashboard-panel {
-    background: #111827; /* Deep terminal background */
+    background: #111827; /* Deep Terminal Base */
     border: 1px solid #1f2937;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Matching the Header Panel Dots from your Portfolio Hero Section */
+/* Terminal Header */
 .panel-header {
     background: #1f2937;
-    padding: 12px 20px;
+    padding: 14px 20px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #374151;
@@ -904,12 +977,12 @@
 .panel-dots {
     display: flex;
     gap: 8px;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 
 .panel-dots span {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     display: inline-block;
 }
@@ -920,109 +993,168 @@
 
 .panel-title {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #9ca3af;
+    letter-spacing: 0.5px;
 }
 
+/* Inside Terminal Workspace */
 .panel-body {
-    padding: 30px;
+    padding: 25px;
 }
 
 .status-alert {
     display: flex;
     align-items: center;
-    gap: 20px;
-    background: rgba(16, 185, 129, 0.1);
+    gap: 15px;
+    background: rgba(16, 185, 129, 0.08);
     border: 1px solid rgba(16, 185, 129, 0.2);
-    padding: 20px;
+    padding: 16px;
     border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .status-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #10b981;
 }
 
 .status-text h3 {
     color: #10b981;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0 0 2px 0;
 }
 
 .status-text p {
     color: #d1d5db;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    margin: 0;
 }
 
-/* Telemetry Column Layout Grid */
+/* Data Column Telemetry Grid */
 .telemetry-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .telemetry-card {
     background: #1f2937;
     border: 1px solid #374151;
-    padding: 15px;
+    padding: 12px 8px;
     border-radius: 6px;
     text-align: center;
 }
 
 .telemetry-card .label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #9ca3af;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     letter-spacing: 0.5px;
 }
 
 .telemetry-card .value {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #ffffff;
 }
 
 .status-green { color: #10b981 !important; }
 .status-orange { color: #f59e0b !important; }
 
-/* Log Console Window Container */
+/* Log Console Output Block */
 .console-log {
     background: #030712;
-    padding: 15px 20px;
+    padding: 15px;
     border-radius: 6px;
     border: 1px solid #1f2937;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.6;
-    text-align: left;
 }
 
 .log-line {
     color: #e5e7eb;
+    margin: 0;
 }
 
 .log-ts {
     color: #6b7280;
 }
 
-@keyframes fadeInDashboard {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Base Form Feedback Notification */
+.form-feedback {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 10px;
+    color: #ffffff;
+    background: #1f2937;
 }
 
-/* Responsive adjustments for mobile phone setups */
-@media (max-width: 600px) {
+.form-feedback.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+/* Keyframe Animations */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Icon Pulse Effects */
+.animate-pulse {
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* =========================================================
+   LIGHT THEME INTERACTIVE OVERRIDES
+========================================================= */
+body.light-theme .contact-info-sidebar h3,
+body.light-theme .contact-info-sidebar strong {
+    color: #111827;
+}
+
+body.light-theme .contact-info-sidebar p {
+    color: #4b5563;
+}
+
+body.light-theme #contact-form input,
+body.light-theme #contact-form textarea {
+    background: #ffffff;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+========================================================= */
+@media (max-width: 768px) {
+    .contact-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
     .telemetry-grid {
         grid-template-columns: 1fr;
-    }
-    .status-alert {
-        flex-direction: column;
-        text-align: center;
+        gap: 10px;
     }
 }
