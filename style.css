@@ -1,4 +1,49 @@
+:root {
+    /* Premium Cyber-Dark Palette Theme */
+    --bg: #030712;
+    --bg-light: #0b0f19;
+    --card: #0f172a;
+    --card-hover: #1e293b;
+    --text: #f8fafc;
+    --text-light: #94a3b8;
+    --text-dark: #475569;
 
+    /* Vibrant Developer Accents */
+    --primary: #3b82f6;
+    /* Digital Blue */
+    --primary-light: #60a5fa;
+    --secondary: #a855f7;
+    /* Synth Purple */
+    --accent: #10b981;
+    /* Code Green */
+    --orange: #f97316;
+    /* Logic Orange */
+
+    --border: rgba(255, 255, 255, 0.06);
+    --container: 1150px;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+body.light-theme {
+    /* Minimalist Light-Tech Palette Overrides */
+    --bg: #f8fafc;
+    --bg-light: #ffffff;
+    --card: #ffffff;
+    --card-hover: #f1f5f9;
+    --text: #0f172a;
+    --text-light: #475569;
+    --text-dark: #94a3b8;
+
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --secondary: #7c3aed;
+
+    --border: rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   2. RESETS & STRUCTURE BASE LAYOUT
+========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +52,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 85px;
 }
 
 body {
@@ -24,7 +69,9 @@ a {
     text-decoration: none;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
     font: inherit;
     color: inherit;
 }
@@ -39,55 +86,12 @@ ul {
     list-style: none;
 }
 
-/* =========================================================
-   2. CORE SYSTEM DESIGN TOKENS (LIGHT & DARK THEMES)
-========================================================= */
-:root {
-    /* Dark Theme Default Palette */
-    --bg: #080b12;
-    --bg-light: #0e131d;
-    --card: #111722;
-    --card-hover: #151d2b;
-
-    --text: #f5f7fb;
-    --text-light: #aeb7c7;
-    --text-dark: #737d8f;
-
-    --primary: #5b8cff;
-    --primary-light: #7aa3ff;
-    --secondary: #8b5cf6;
-
-    --border: rgba(255, 255, 255, 0.08);
-    --container: 1150px;
-    --transition: 0.3s ease;
-}
-
-body.light-theme {
-    /* Light Theme Palette Overrides */
-    --bg: #f8fafc;
-    --bg-light: #ffffff;
-    --card: #ffffff;
-    --card-hover: #f1f5f9;
-
-    --text: #0f172a;
-    --text-light: #334155;
-    --text-dark: #64748b;
-
-    --primary: #2563eb;
-    --primary-light: #3b82f6;
-    --secondary: #7c3aed;
-
-    --border: rgba(0, 0, 0, 0.08);
-}
-
-/* =========================================================
-   3. GENERAL / UTILITIES & STRUCTURAL WRAPPERS
-========================================================= */
 body::selection {
     background: var(--primary);
-    color: white;
+    color: #ffffff;
 }
 
+/* Global Content Section Rules */
 .section {
     width: 100%;
     max-width: var(--container);
@@ -112,15 +116,19 @@ body::selection {
 .section-heading h2 {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
+    letter-spacing: -1px;
 }
 
 .section-heading h2 span {
-    color: var(--primary);
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-backgroundclip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* =========================================================
-   4. BUTTONS
+   3. ATOMIC ELEMENTS & NAVIGATION HANDLERS
 ========================================================= */
+/* Action Buttons Framework */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -130,12 +138,16 @@ body::selection {
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .primary-btn {
     background: var(--primary);
-    color: white;
+    color: #ffffff;
     border: 1px solid var(--primary);
 }
 
@@ -157,9 +169,11 @@ body::selection {
     transform: translateY(-3px);
 }
 
-/* =========================================================
-   5. HEADER / NAVBAR
-========================================================= */
+.btn:active {
+    transform: scale(0.96) translateY(0) !important;
+}
+
+/* Header Sticky Navigation Panel */
 .header {
     position: fixed;
     top: 0;
@@ -179,8 +193,8 @@ body.light-theme .header {
 }
 
 .header.scrolled {
-    background: var(--bg);
     height: 65px;
+    background: var(--bg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -217,7 +231,6 @@ body.light-theme .header {
     font-size: 0.9rem;
     font-weight: 500;
     padding: 5px 0;
-    transition: var(--transition);
 }
 
 .nav-links a:hover,
@@ -228,12 +241,13 @@ body.light-theme .header {
 .nav-links a::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: -2px;
     width: 0;
     height: 2px;
-    background: var(--primary);
-    transition: var(--transition);
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    transform: translateX(-50%);
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nav-links a:hover::after,
@@ -250,7 +264,6 @@ body.light-theme .header {
 .theme-toggle-btn {
     font-size: 1.2rem;
     color: var(--text-light);
-    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,6 +272,7 @@ body.light-theme .header {
 
 .theme-toggle-btn:hover {
     color: var(--primary);
+    transform: rotate(15deg);
 }
 
 .navbar .nav-btn {
@@ -268,12 +282,11 @@ body.light-theme .header {
     color: var(--primary);
     font-size: 0.85rem;
     font-weight: 600;
-    transition: var(--transition);
 }
 
 .navbar .nav-btn:hover {
     background: var(--primary);
-    color: white;
+    color: #ffffff;
 }
 
 .menu-btn {
@@ -284,10 +297,11 @@ body.light-theme .header {
 }
 
 /* =========================================================
-   6. HERO SECTION
+   4. HERO SECTION WITH MONOKAI CODE COMPONENT
 ========================================================= */
 .hero-section {
     background: radial-gradient(circle at 80% 20%, rgba(91, 140, 255, 0.05) 0%, transparent 50%);
+    overflow: hidden;
 }
 
 .hero {
@@ -313,9 +327,246 @@ body.light-theme .header {
     opacity: 0.1;
 }
 
+.hero-small {
+    color: var(--primary-light);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.hero-info h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+}
+
+.hero-info h1 span {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-backgroundclip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-info h2 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--text-light);
+    line-height: 1.3;
+    margin-bottom: 24px;
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    font-size: 1.4rem;
+    color: var(--text-light);
+}
+
+.social-links a:hover {
+    color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+/* Interactive IDE Terminal Mockup Layout */
+.code-card {
+    background: #080d1a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 100%;
+}
+
+.code-header {
+    background: #0e1626;
+    padding: 16px 20px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.code-header span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-1 {
+    background: #ef4444;
+}
+
+.dot-2 {
+    background: #f59e0b;
+}
+
+.dot-3 {
+    background: #10b981;
+}
+
+.code-content {
+    padding: 24px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    overflow-x: auto;
+}
+
+/* Syntax Tokens */
+.purple {
+    color: #c084fc;
+}
+
+.blue {
+    color: #60a5fa;
+}
+
+.green {
+    color: #34d399;
+}
+
+.orange {
+    color: #fb923c;
+}
+
+.indent {
+    padding-left: 20px;
+}
+
+.indent-2 {
+    padding-left: 40px;
+}
+
 /* =========================================================
-   7. INTERACTIVE TELEMETRY DASHBOARD DESIGN
+   5. BIOGRAPHY & TECHNICAL TOOLKIT GRID
 ========================================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.about-text h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+
+/* Skills Tool Matrix Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 16px;
+}
+
+.skill-item {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    padding: 20px 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.skill-item i {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.skill-item p {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* =========================================================
+   6. PORFOLIO SHOWCASE MATRIX GRID
+========================================================= */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+project-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.project-img-placeholder {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: var(--primary-light);
+    border-bottom: 1px solid var(--border);
+}
+
+.project-info {
+    padding: 24px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.project-tags span {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    color: var(--primary-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+body.light-theme .project-tags span {
+    background: rgba(37, 99, 235, 0.06);
+}
+
+.project-info h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* =========================================================7. INTERACTIVE TELEMETRY DASHBOARD COMPONENTS========================================================= */
 .contact-grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -376,13 +627,8 @@ body.light-theme .header {
     box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.15);
 }
 
-/* Dashboard Terminal Core Card Layout */
-.dashboard-wrapper {
-    animation: dashboardSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
+/* Dashboard Terminal Core Card Layout /.dashboard-panel {background: #0b0f19; / Pure Terminal Background */
 .dashboard-panel {
-    background: #0b0f19; /* Pure Terminal Background */
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     overflow: hidden;
@@ -390,7 +636,8 @@ body.light-theme .header {
 }
 
 body.light-theme .dashboard-panel {
-    background: #0f172a; /* Keep terminal panel dark even in light theme for visual consistency */
+    background: #0b0f19;
+    /* Kept dark for aesthetic consistency */
 }
 
 .panel-header {
@@ -412,10 +659,6 @@ body.light-theme .dashboard-panel {
     height: 10px;
     border-radius: 50%;
 }
-
-.dot-red { background: #ef4444; }
-.dot-yellow { background: #f59e0b; }
-.dot-green { background: #10b981; }
 
 .panel-title {
     font-family: monospace;
@@ -488,8 +731,13 @@ body.light-theme .dashboard-panel {
     color: #ffffff;
 }
 
-.status-green { color: #10b981 !important; }
-.status-orange { color: #f59e0b !important; }
+.status-green {
+    color: #10b981 !important;
+}
+
+.status-orange {
+    color: #f59e0b !important;
+}
 
 /* System Console Log Elements */
 .console-log {
@@ -502,13 +750,16 @@ body.light-theme .dashboard-panel {
     font-size: 0.78rem;
     line-height: 1.6;
 }
+
 .log-line {
     color: #cbd5e1;
     margin: 0;
 }
+
 .log-ts {
     color: #475569;
 }
+
 /* Loading & Action Messages Form Feedback */
 .form-feedback {
     font-size: 0.9rem;
@@ -518,28 +769,160 @@ body.light-theme .dashboard-panel {
     background: var(--card);
     border: 1px solid var(--border);
 }
+
 .form-feedback.error {
     background: rgba(239, 68, 68, 0.08);
     border-color: rgba(239, 68, 68, 0.2);
     color: #ef4444;
 }
-/* Operational Status Structural Animations */
-@keyframes dashboardSlideIn {
+
+/* =========================================================8. CORE LAYOUT ENGINE ANIMATIONS & EFFECTS========================================================= */
+/* Entrance Fade Transforms */
+.dashboard-wrapper,
+.project-card,
+.skill-item {
+    opacity: 0;
+    animation: slideUpFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered load delays */
+.project-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideUpFadeIn {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-/* Responsive Adaptive Setup Overrides */
+
+/* Telemetry Signal Handshake Indicator */
+.animate-pulse {
+    animation: terminalPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes terminalPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.95);
+    }
+}
+
+/* Background Spinner Logic Triggers */
+.fa-spinner {
+    animation: engineSpin 1s linear infinite;
+}
+
+@keyframes engineSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Cards Interactive Neon Depth Map */
+.code-card,
+.project-card,
+.dashboard-panel,
+.skill-item {
+    transition: var(--transition);
+}
+
+.code-card:hover,
+.project-card:hover,
+.dashboard-panel:hover,
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.08), 0 0 0 1px rgba(91, 140, 255, 0.2);
+}
+
+body.light-theme .project-card:hover,
+body.light-theme .skill-item:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(37, 99, 235, 0.1);
+}
+
+/* =========================================================9. ADAPTIVE RESPONSIVE FRAMEWORK BREAKPOINTS========================================================= */
+@media (max-width: 992px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
 @media (max-width: 768px) {
+    .section {
+        padding: 80px 20px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--bg-light);
+        border-left: 1px solid var(--border);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: -20px 0 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .navbar .nav-btn {
+        display: none;
+    }
+
     .contact-grid-layout {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
     .telemetry-grid {
         grid-template-columns: 1fr;
         gap: 10px;
