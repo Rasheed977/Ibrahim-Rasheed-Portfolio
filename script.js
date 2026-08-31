@@ -1,4 +1,5 @@
 
+// 1. Element Selection Setup
 const header = document.getElementById('header');
 const menuBtn = document.getElementById('menu-btn');
 const navLinksContainer = document.getElementById('nav-links');
@@ -118,10 +119,10 @@ function updateThemeIcon(currentTheme) {
     }
 }
 
-// 8. Secure Async Contact Form Handler with Dashboard View Swap
+// 8. Secure Async Contact Form Handler with Dashboard Anti-Vanishing Logic
 if (contactForm) {
     contactForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevents Formspree from opening its external website redirection
+        event.preventDefault(); // Prevents Formspree from reloading or opening its external success website
 
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const successDashboard = document.getElementById('success-dashboard');
@@ -149,17 +150,19 @@ if (contactForm) {
                 throw new Error(`Submission failed with status ${response.status}`);
             }
 
-            // Successfully processed
+            // SUCCESS FLOW
             contactForm.reset();
             
             if (formFeedback) {
-                formFeedback.style.display = 'none'; 
+                formFeedback.style.display = 'none'; // Clear the internal small loader text
             }
             
-            // Layout Viewport State Swap 
+            // ANTI-VANISHING ENGINE: Safely swap visibility states
             contactForm.style.display = 'none';
+            
             if (successDashboard) {
-                successDashboard.style.display = 'block';
+                successDashboard.removeAttribute('style'); // Completely strips any layout-blocking CSS rules
+                successDashboard.style.display = 'block';   // Forces the block panel layout context into frame
                 successDashboard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
 
