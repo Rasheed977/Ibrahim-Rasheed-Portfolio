@@ -639,8 +639,8 @@ body.light-theme .project-tags span {
 
 /* =========================================================7. INTERACTIVE TELEMETRY DASHBOARD COMPONENTS========================================================= */
 .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: clamp(24px, 3vw, 50px);
     align-items: stretch;
     max-width: var(--container);
@@ -648,6 +648,8 @@ body.light-theme .project-tags span {
 }
 
 .contact-details {
+    flex: 1 1 320px;
+    min-width: 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 18px;
@@ -701,6 +703,8 @@ body.light-theme .project-tags span {
 }
 
 .contact-form {
+    flex: 1.2 1 420px;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -780,8 +784,21 @@ body.light-theme .icon-box {
 }
 
 @media (max-width: 768px) {
+    #contact .section-heading {
+        margin-bottom: 32px;
+    }
+
     .contact-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+    }
+
+    .contact-details,
+    .contact-form {
+        flex: 0 0 auto;
+        width: 100%;
     }
 
     .form-row {
