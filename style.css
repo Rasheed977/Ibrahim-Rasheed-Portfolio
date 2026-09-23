@@ -1197,6 +1197,28 @@ body.light-theme .footer p {
         padding: 80px 20px;
     }
 
+    .header {
+        height: 64px;
+    }
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .brand-wrap {
+        gap: 8px;
+        padding: 5px 10px 5px 6px;
+    }
+
+    .brand-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
     .menu-btn {
         display: block;
     }
